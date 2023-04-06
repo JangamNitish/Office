@@ -5,10 +5,13 @@ public class Stringtask
     {
         Implementationstring ob = new Implementationstring();
         //ob.duplicate();
-        ob.reverse();
+        //ob.reverse();
         //ob.occurrence();
+        //ob.permutation();
         //ob.longest();
         //ob.length();
+
+
     }
 }
 
@@ -65,27 +68,71 @@ public class Implementationstring {
                 System.out.print(string[i]+" "+count);
         }
     }
-    void longest()
-    {
-        Scanner sc=new Scanner(System.in);
-        String sn="Jangam Nitish kumar";
-        System.out.println("enter substring index: ");
-        int n=sc.nextInt();
-        String sn1=sn.substring(n);
-        int count;
-        char st[] = sn1.toCharArray();
-        for(int i = 0; i <st.length; i++) {
-            count = 1;
-            for(int j = i+1; j <st.length; j++) {
-                if(st[i] == st[j]) {
-                    count++;
-                    st[j] = '0';
+    void longest() {
+        Scanner sc = new Scanner(System.in);
+        String str=sc.next();
+        String y = "";
+        int lng = 0;
+        for (char c : str.toCharArray()) {
+            String x = str.valueOf(c);
+            if (y.contains(x)) {
+                y="";
+            }
+            y = y + String.valueOf(c);
+            if(y.length()>=lng) {
+                lng=y.length();
+            }
+        }
+        System.out.println(lng);
+    }
+
+    void permutation(){
+        String str = "msf";
+        int n = str.length();
+        Implementationstring permutation = new Implementationstring();
+        permutation.permute(str, 0, n - 1);
+    }
+        private void permute(String str, int l, int r)
+        {
+            if (l == r)
+                System.out.println(str);
+            else {
+                for (int i = l; i <= r; i++) {
+                    str = swap(str, l, i);
+                    permute(str, l + 1, r);
+                    str = swap(str, l, i);
                 }
             }
-            if(count > 1 && st[i] != '0')
-                System.out.println(st[i]+" ");
         }
+        public String swap(String a, int i, int j)
+        {
+            char temp;
+            char[] charArray = a.toCharArray();
+            temp = charArray[i];
+            charArray[i] = charArray[j];
+            charArray[j] = temp;
+            return String.valueOf(charArray);
+        }
+    int longest(String str) {
+        String s="marketsimplified";
+        Implementationstring ob=new Implementationstring();
+        System.out.println(ob.longest(s));
+        String y = "";
+        int lng = 0;
+        for (char c : str.toCharArray()) {
+            String x = str.valueOf(c);
+            if (y.contains(x)) {
+                y="";
+            }
+            y = y + String.valueOf(c);
+            if(y.length()>=lng) {
+                lng=y.length();
+            }
+        }
+        return lng;
+
     }
+
     void length()
     {
         Scanner sc=new Scanner(System.in);
