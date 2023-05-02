@@ -158,7 +158,6 @@ public class DetailsPassing {
 
     public static void main(String[] args) throws Exception {
         Connetor con = new Connetor();
-        con.truncate();
         int choice;
         do {
         	 System.out.println("1--> insert 2--> Update  3-->Delete  4--> jason format");
